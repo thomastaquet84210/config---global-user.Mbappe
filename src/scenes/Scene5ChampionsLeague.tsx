@@ -24,10 +24,29 @@ export const Scene5ChampionsLeague: React.FC = () => {
     easing: Easing.out(Easing.cubic),
   });
 
+  const ringOpacity = interpolate(frame, [0, 40], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
   return (
     <AbsoluteFill
       style={{ alignItems: "center", justifyContent: "center", gap: 90 }}
     >
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          translate: "-50% -50%",
+          width: 860,
+          height: 860,
+          borderRadius: "50%",
+          border: "1.5px dashed rgba(217,167,66,0.22)",
+          opacity: ringOpacity,
+          rotate: `${frame * 0.15}deg`,
+        }}
+      />
       <div style={{ width: 760, height: 90, position: "relative" }}>
         <div
           style={{

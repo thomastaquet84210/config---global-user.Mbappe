@@ -54,6 +54,24 @@ export const Scene1Hook: React.FC = () => {
           justifyContent: "center",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            width: (RADIUS + 20) * 2 + 180,
+            height: (RADIUS + 20) * 2 + 180,
+            left: "50%",
+            top: "50%",
+            translate: "-50% -50%",
+            borderRadius: "50%",
+            background:
+              "repeating-conic-gradient(from 0deg, rgba(217,167,66,0.14) 0deg 3deg, rgba(0,0,0,0) 3deg 16deg)",
+            opacity: interpolate(frame, [0, 40], [0, 1], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            }),
+            rotate: `${-frame * 0.2}deg`,
+          }}
+        />
         <svg
           width={RADIUS * 2 + 40}
           height={RADIUS * 2 + 40}

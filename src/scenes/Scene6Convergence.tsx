@@ -24,7 +24,7 @@ const SATELLITES = [
   { icon: <StarBallIcon />, x: 2, y: 50, appearAt: 200 },
 ] as const;
 
-const ORBIT = 560;
+const ORBIT = 640;
 
 // Convergence beat: the four accolades from the previous scenes recombine
 // as plain icons (their labels already landed earlier) orbiting a portrait,
@@ -85,8 +85,8 @@ export const Scene6Convergence: React.FC = () => {
             left: "50%",
             top: "50%",
             translate: "-50% -50%",
-            width: 300,
-            height: 300,
+            width: 330,
+            height: 330,
             borderRadius: "50%",
             overflow: "hidden",
             border: `4px solid ${palette.gold}`,
@@ -125,8 +125,8 @@ export const Scene6Convergence: React.FC = () => {
                 left: `${sat.x}%`,
                 top: `${sat.y}%`,
                 translate: "-50% -50%",
-                width: 108,
-                height: 108,
+                width: 120,
+                height: 120,
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
@@ -134,7 +134,7 @@ export const Scene6Convergence: React.FC = () => {
                 background: "rgba(11,15,28,0.7)",
                 border: `2.5px solid ${palette.gold}`,
                 color: palette.gold,
-                padding: 26,
+                padding: 28,
                 boxSizing: "border-box",
                 scale,
                 opacity,

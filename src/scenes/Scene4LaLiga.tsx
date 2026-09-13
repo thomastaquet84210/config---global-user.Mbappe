@@ -1,46 +1,55 @@
 import React from "react";
-import { AbsoluteFill, staticFile } from "remotion";
-import { PhotoReveal } from "../components/PhotoReveal";
-import { Badge } from "../components/Badge";
+import { AbsoluteFill, Interactive, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { palette } from "../palette";
+import { bodyFont } from "../fonts";
+import { Medallion } from "../components/Medallion";
 import { RankChip } from "../components/RankChip";
 import { BootIcon } from "../components/Icons";
 
 // La Liga beat: personal top-scorer trophy vs. the team's league position —
 // two rank chips make the contrast visual instead of restating it in words.
+// The photo now lives inside the recurring medallion motif.
 export const Scene4LaLiga: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  const kickerOpacity = interpolate(frame, [26, 46], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
   return (
-    <AbsoluteFill>
-      <PhotoReveal
+    <AbsoluteFill
+      style={{ alignItems: "center", justifyContent: "center", gap: 40 }}
+    >
+      <Medallion
         src={staticFile("images/mbappe-pichichi.webp")}
+        size={320}
         appearAt={0}
-        holdFrames={210}
-        objectPosition="center 20%"
+        objectPosition="center 18%"
+        accentIcon={<BootIcon />}
       />
-      <AbsoluteFill
+      <Interactive.Div
+        name="Pichichi kicker"
         style={{
-          alignItems: "center",
-          paddingTop: 150,
+          fontFamily: bodyFont,
+          fontWeight: 700,
+          fontSize: 28,
+          letterSpacing: 5,
+          color: palette.gold,
+          opacity: kickerOpacity,
         }}
       >
-        <Badge icon={<BootIcon />} label="PICHICHI · LIGA" appearAt={14} />
-      </AbsoluteFill>
-      <AbsoluteFill
-        style={{
-          alignItems: "center",
-          justifyContent: "flex-end",
-          paddingBottom: 190,
-        }}
-      >
-        <div style={{ display: "flex", gap: 56 }}>
-          <RankChip rank="#1" label="BUTEUR DE LA LIGA" appearAt={60} />
-          <RankChip
-            rank="#2"
-            label="DERRIÈRE LE FC BARCELONE"
-            appearAt={110}
-            dimmed
-          />
-        </div>
-      </AbsoluteFill>
+        PICHICHI · LIGA
+      </Interactive.Div>
+      <div style={{ display: "flex", gap: 50 }}>
+        <RankChip rank="#1" label="BUTEUR DE LA LIGA" appearAt={60} />
+        <RankChip
+          rank="#2"
+          label="DERRIÈRE LE FC BARCELONE"
+          appearAt={110}
+          dimmed
+        />
+      </div>
     </AbsoluteFill>
   );
 };

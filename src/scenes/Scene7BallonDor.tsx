@@ -46,7 +46,7 @@ export const Scene7BallonDor: React.FC = () => {
         style={{
           alignItems: "center",
           justifyContent: "flex-end",
-          paddingBottom: 210,
+          paddingBottom: 110,
         }}
       >
         <div
