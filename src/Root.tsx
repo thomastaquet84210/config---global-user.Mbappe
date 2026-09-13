@@ -1,10 +1,18 @@
 import "./index.css";
-import { MyComposition } from "./Composition";
+import { Composition } from "remotion";
+import { MbappeBallonDor } from "./MbappeBallonDor";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <MyComposition />
+      <Composition
+        id="MbappeBallonDor"
+        component={MbappeBallonDor}
+        durationInFrames={1140}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
     </>
   );
 };
